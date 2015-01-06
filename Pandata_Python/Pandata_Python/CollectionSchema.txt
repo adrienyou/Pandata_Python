@@ -1,0 +1,43 @@
+Research : 
+{
+	'_id' : id
+	'user_id' : user_id
+	'name' : name
+	'duration' : "1/2/3/4 weeks"
+	'macrodata' : 
+		{
+			'words' : ['a', 'b', 'c']
+			'posEmotion' : 83%
+			'negEmotion' : 12%
+			'neutralEmotin' : 5%
+			'size' : 1532513546543131
+
+		} 
+	'microdata' : 
+		{
+			'tweets' : [tweet1, tweet2...]
+		}
+}
+
+Tweet : 
+{
+	'_id' : id,
+	'created_at': 
+	{
+		'hour' : hour,
+ 		'day' : day,
+		'month' : month,
+		'year' : year
+	},
+	'entities' : 
+	{
+		'hashtags' : ["bla", "blabla"...],
+		'symbols' : ["asd", "aspodapod"...]
+	},
+	'favorited' : favorited,
+	'lang' : lang,
+	'place' : place,
+	'retweet' : retweet,
+	'text' : text,
+	'user' TODO
+}
