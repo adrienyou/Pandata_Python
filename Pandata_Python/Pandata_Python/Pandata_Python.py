@@ -19,7 +19,7 @@ if __name__ == '__main__':
     
     # Create the stream with a filter on the following tracks
     streamer = TwitterManager.TweetStreamer(consumer_key, consumer_secret, access_token, access_token_secret)
-    streamer.statuses.filter(track = 'samsung, apple', language = 'en')
+    streamer.statuses.filter(track = 'samsung, apple', language = 'en, fr')
     
     
 
