@@ -15,7 +15,7 @@ def createCollection(coll_name, db_name, client):
     collection = db[coll_name]
     print("Creating collection : " + coll_name)
 
-# Insert a document in a given collection in a database and a client
+# Insert a document in a given collection with a database and a client
 def insertDocInCollection(doc, coll_name, db_name, client):
     db = client[db_name]
     collection = db[coll_name]
@@ -24,3 +24,12 @@ def insertDocInCollection(doc, coll_name, db_name, client):
     except:
         print("Unexpected error:", sys.exc_info())
 
+# Insert a tweet in a given collection with a databasse and a client
+def insertTweetInCollection(tweet, coll_name, db_name, client):
+    db = client[db_name]
+    collection = db[coll_name]
+    try:
+        collection.update({"_id" : 1}, {"$push": {"tweets" : tweet}})
+        print("Insertion effectuee")
+    except:
+        print("Unexpected error:", sys.exc_info())

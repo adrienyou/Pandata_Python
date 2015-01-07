@@ -16,6 +16,8 @@ access_token_secret = Constants.Connexion.ACCESS_TOKEN_SECRET
 doc = {}
 doc["_id"] = 1
 doc["name"] = 'Adrien You'
+doc["tweets"] = []
+tweet = 'a'    
 
 if __name__ == '__main__':
 
@@ -23,9 +25,10 @@ if __name__ == '__main__':
     client = pymongo.MongoClient()
 
     # Create db, coll et insert car si pas de docs, la db et la coll ne sont pas save
-    MongoManager.createDatabase("premierTest" , client)
-    MongoManager.createCollection("premierCollTest", "premierTest", client)
-    MongoManager.insertDocInCollection(doc, "premierCollTest", "premierTest", client)
+    #MongoManager.createDatabase("dbtest" , client)
+    #MongoManager.createCollection(Constants.Database.COLL_NAME, "dbtest", client)
+    MongoManager.insertDocInCollection(doc, Constants.Database.COLL_NAME, "dbtest", client)
+    MongoManager.insertTweetInCollection(tweet, Constants.Database.COLL_NAME, "dbtest", client)
     
     # Create the stream with a filter on the following tracks
     #streamer = TwitterManager.TweetStreamer(consumer_key, consumer_secret, access_token, access_token_secret)

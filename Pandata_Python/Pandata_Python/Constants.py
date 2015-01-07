@@ -14,8 +14,9 @@ class Connexion:
 class Database:
     """Contains the Database constants, such as db_name, collection_name"""
 
-    DB_NAME = ""
-    COLL_NAME = ""
+    DB_NAME = "Researches"
+    COLL_NAME = "SamsungApple"
+    _ID = 1
 
 class TwitterField:
     """Contains the Twitter fields used """
