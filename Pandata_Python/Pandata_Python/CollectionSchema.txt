@@ -4,19 +4,12 @@ Research :
 	'user_id' : user_id
 	'name' : name
 	'duration' : "1/2/3/4 weeks"
-	'macrodata' : 
-		{
-			'words' : ['a', 'b', 'c']
-			'posEmotion' : 83%
-			'negEmotion' : 12%
-			'neutralEmotin' : 5%
-			'size' : 1532513546543131
-
-		} 
-	'microdata' : 
-		{
-			'tweets' : [tweet1, tweet2...]
-		}
+	'words' : ['a', 'b', 'c']
+	'posEmotion' : 83
+	'negEmotion' : 12
+	'neutralEmotin' : 5
+	'size' : 100
+	'tweets' : [tweet1, tweet2...]
 }
 
 Tweet : 

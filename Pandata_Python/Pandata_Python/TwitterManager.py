@@ -9,11 +9,18 @@ import json
 class TweetStreamer(TwythonStreamer):
     """ Method on_success will be called when tweets are received """
     def on_success(self, data):
+
+        # Connect to the default host and port. Can be specified : MongoClient('localhost', 27017)
+        client = pymongo.MongoClient()
+
+        # Create the tweet under the format we want
         tweet = dataWorker(data)
 
-        #TODO: insert in database
-        print(to_JSON(tweet))
-        print('###############################')
+        # Insert the tweet ine the research collection we want
+        MongoManager.insertTweetInCollection(tweet, Constants.Database.COLL_NAME, Constants.Database.DB_NAME, client)
+        
+        # Modify the macro data
+        MongoManager.modifyMacroInCollection(tweet, Constants.Database.COLL_NAME, Constants.Database.DB_NAME, client)
 
     def on_error(self, status_code, data):
         print(status_code)
@@ -32,7 +39,7 @@ def dataWorker(data):
                   placeWorker(data[Constants.TwitterField.PLACE]),
                   data[Constants.TwitterField.RETWEET],
                   data[Constants.TwitterField.TEXT].encode('utf-8'),
-                  data[Constants.TwitterField.USER]
+                  userWorker(data[Constants.TwitterField.USER])
                   )
     
     return tweet  
@@ -106,6 +113,9 @@ def placeWorker(place):
     else:
         return 'null'
 
+def userWorker(user):
+    #DO STUFF
+    return 0
 
 def createTweet(v_created_at, v_entities, v_favorited, v_lang, v_place, v_retweet, v_text, v_user): 
     
