@@ -4,6 +4,8 @@
 class AbstractConstants:
     POSITIVE = "pos"
     NEGATIVE = "neg"
+    NEUTRAL = "neu"
+    EXISTING_COLL = True
 
 class Connexion:
     """Contains the connexion constants, such as access_token key/secret and consumer key/secret """
@@ -18,10 +20,10 @@ class Database:
     """Contains the Database constants, such as db_name, collection_name"""
 
     #DB_NAME = "Researches"
-    DB_NAME = "dbtest"
+    DB_NAME = "dbtest2"
     COLL_ID = 1
     COLL_USER_ID = 1
-    COLL_NAME = "SamsungApple"
+    COLL_NAME = "colltest2"
     DURATION = 3
     WORDS = ["samsung", "apple"]
 

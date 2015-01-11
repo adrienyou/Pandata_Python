@@ -31,6 +31,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Pandata_Python.py" />
+    <Compile Include="TextAnalysis.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TwitterManager.py">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CollectionSchema.txt" />
+    <Content Include="negative_words" />
+    <Content Include="positive_words" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

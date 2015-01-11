@@ -32,5 +32,11 @@ Tweet :
 	'place' : place,
 	'retweet' : retweet,
 	'text' : text,
-	'user' TODO
+	'user' :
+	{
+		'name' : name
+		'followers_count' : followers_count
+		'time_zone' : time_zone
+	}
+
 }

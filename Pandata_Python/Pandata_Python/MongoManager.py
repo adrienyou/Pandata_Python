@@ -4,6 +4,8 @@
 
 import pymongo
 import Constants
+import TextAnalysis
+import sys
 
 # Create the default document structure in which the tweets will be uploaded
 def createDefaultDoc(_id, user_id, name, duration, words):
@@ -38,6 +40,7 @@ def insertTweetInCollection(tweet, coll_name, db_name, client):
     collection = db[coll_name]
     try:
         collection.update({"_id" : Constants.Database.COLL_ID}, {"$push": {"tweets" : tweet}})
+        print('Tweet inserted')
     except:
         print("Unexpected error:", sys.exc_info())
 
@@ -45,21 +48,23 @@ def insertTweetInCollection(tweet, coll_name, db_name, client):
 def modifyMacroInCollection(tweet, coll_name, db_name, client):
     db = client[db_name]
     collection = db[coll_name]
+
+    emotion = TextAnalysis.getTextEmotion(tweet)
     try:
         # Add one to the size
         collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {"size" : 1}})
 
-        if(getTextEmotion(tweet) == Constants.AbstractConstants.POSITIVE):
+        if(emotion == Constants.AbstractConstants.POSITIVE):
             # Positive emotion
-            collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {"positive_emotion" : 1}})
+            collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {Constants.ResearchField.POSEMO : 1}})
         
-        elif(getTextEmotion(tweet) == Constants.AbstractConstants.NEGATIVE):
+        elif(emotion == Constants.AbstractConstants.NEGATIVE):
             # Negative emotion
-            collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {"negative_emotion" : 1}})
+            collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {Constants.ResearchField.NEGEMO : 1}})
         
-        else: 
+        elif(emotion == Constants.AbstractConstants.NEUTRAL): 
             # Neutral emotion
-            collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {"neutral_emotion" : 1}})
+            collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {Constants.ResearchField.NEUEMO : 1}})
     except:
         print("Unexpected error:", sys.exc_info())
 

@@ -3,8 +3,11 @@
 """
 
 from twython import TwythonStreamer
-import Constants
 import json
+import pymongo
+import Constants
+import MongoManager
+import TextAnalysis
 
 class TweetStreamer(TwythonStreamer):
     """ Method on_success will be called when tweets are received """
@@ -101,7 +104,8 @@ def entitiesWorker(hashtagsField, symbolsField):
     entities['symbols'] = symbList
 
     return entities
-    
+ 
+""" Worker applied to the place field from the data from the stream """   
 def placeWorker(place):
     if place:
         if place['country']:
@@ -113,9 +117,27 @@ def placeWorker(place):
     else:
         return 'null'
 
+""" Worker applied to the user field from the data from the stream """
 def userWorker(user):
-    #DO STUFF
-    return 0
+    userV = {}
+    
+    if user:
+        if user['name']:
+            userV['name'] = user['name']
+        else:
+            userV['name'] = 'null'
+        
+        if user['followers_count']:
+            userV['followers_count'] = user['followers_count']
+        else:
+            userV['followers_count'] = 'null'
+        
+        if user['time_zone']:
+            userV['time_zone'] = user['time_zone']
+        else:
+            userV['time_zone'] = 'null'
+
+    return userV
 
 def createTweet(v_created_at, v_entities, v_favorited, v_lang, v_place, v_retweet, v_text, v_user): 
     
@@ -127,7 +149,7 @@ def createTweet(v_created_at, v_entities, v_favorited, v_lang, v_place, v_retwee
     tweet['place'] = v_place
     tweet['retweet'] = v_retweet
     tweet['text'] = str(v_text, encoding='utf-8')
-    #tweet['user'] = v_user
+    tweet['user'] = v_user
 
     return tweet
 
