@@ -15,6 +15,8 @@ def createDefaultDoc(_id, user_id, name, duration, words):
     doc[Constants.ResearchField.USER_ID] = user_id
     doc[Constants.ResearchField.NAME] = name
     doc[Constants.ResearchField.DURATION] = duration
+    doc[Constants.ResearchField.POSDICTIO] = []
+    doc[Constants.ResearchField.NEGDICTIO] = []
     doc[Constants.ResearchField.WORDS] = words
     doc[Constants.ResearchField.POSEMO] = 0
     doc[Constants.ResearchField.NEGEMO] = 0
@@ -45,11 +47,14 @@ def insertTweetInCollection(tweet, coll_name, db_name, client):
         print("Unexpected error:", sys.exc_info())
 
 # Modify the macro data
-def modifyMacroInCollection(tweet, coll_name, db_name, client):
+def modifyMacroInCollection(response, coll_name, db_name, client):
     db = client[db_name]
     collection = db[coll_name]
+   
+    dictPos = response[Constants.AbstractConstants.POSITIVE]
+    dictNeg = response[Constants.AbstractConstants.NEGATIVE]
+    emotion = response[Constants.ResearchField.EMOTION]
 
-    emotion = TextAnalysis.getTextEmotion(tweet)
     try:
         # Add one to the size
         collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {"size" : 1}})
@@ -65,6 +70,13 @@ def modifyMacroInCollection(tweet, coll_name, db_name, client):
         elif(emotion == Constants.AbstractConstants.NEUTRAL): 
             # Neutral emotion
             collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {Constants.ResearchField.NEUEMO : 1}})
+
+        # Add words to positive_dictio
+
+        for word in dictPos:
+            collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc" : {Constants.ResearchField.POSDICTIO + "." + word : dictPos[word]}})
+
+        # Add words to negative_dictio
     except:
         print("Unexpected error:", sys.exc_info())
 

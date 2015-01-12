@@ -5,10 +5,19 @@ Research :
 	'name' : name
 	'duration' : "1/2/3/4 weeks"
 	'words' : ['a', 'b', 'c']
-	'posEmotion' : 83
-	'negEmotion' : 12
-	'neutralEmotin' : 5
+	'positive_emotion' : 83
+	'negative_emotion' : 12
+	'neutral_emotion' : 5
 	'size' : 100
+	'negative_dictio' : 
+	{
+		'mot1' : 5
+		'mot2' : 569
+	}
+	'positive_dictio' : 
+	{
+		'mot3' : 8
+	}
 	'tweets' : [tweet1, tweet2...]
 }
 
@@ -22,6 +31,7 @@ Tweet :
 		'month' : month,
 		'year' : year
 	},
+	'emotion' : pos/neg/neu
 	'entities' : 
 	{
 		'hashtags' : ["bla", "blabla"...],

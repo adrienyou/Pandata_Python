@@ -6,11 +6,15 @@ import Constants
 import re
 
 positive_words = open('positive_words', 'r').read()
-positive_wordsList=(list(positive_words.split()))
+positive_wordsList= (list(positive_words.split()))
 negative_words = open('negative_words', 'r').read()
-negative_wordsList=(list(negative_words.split()))
+negative_wordsList= (list(negative_words.split()))
 
 def getTextEmotion(tweet):
+
+    response = {}
+    response[Constants.AbstractConstants.POSITIVE] = dict()
+    response[Constants.AbstractConstants.NEGATIVE] = dict()
 
     text = tweet['text']
     words = re.findall(r"[\w']+", text)
@@ -19,13 +23,16 @@ def getTextEmotion(tweet):
     for i in words:
         if i in positive_wordsList:
             count = count + 1
+            response[Constants.AbstractConstants.POSITIVE][i] += 1
         elif i in negative_wordsList: 
             count = count - 1
+            response[Constants.AbstractConstants.NEGATIVE][i] += 1
     
-    print(count)
+    # print(count)
     if count > 0:
-        return Constants.AbstractConstants.POSITIVE
+        response[Constants.ResearchField.EMOTION] = Constants.AbstractConstants.POSITIVE
     elif count < 0:
-        return Constants.AbstractConstants.NEGATIVE
+        response[Constants.ResearchField.EMOTION] = Constants.AbstractConstants.NEGATIVE
     else:
-        return Constants.AbstractConstants.NEUTRAL
+        response[Constants.ResearchField.EMOTION] = Constants.AbstractConstants.NEUTRAL
+    return response

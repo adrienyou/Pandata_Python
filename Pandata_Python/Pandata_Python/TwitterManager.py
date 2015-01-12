@@ -19,11 +19,17 @@ class TweetStreamer(TwythonStreamer):
         # Create the tweet under the format we want
         tweet = dataWorker(data)
 
+        # Call the text analysis worker and get the response (dictPosWords, dictNegWords, emotion)
+        response = TextAnalysis.getTextEmotion(tweet)
+
+        # Add new field to tweet
+        tweet[Constants.ResearchField.EMOTION] = response[Constants.ResearchField.EMOTION]
+
         # Insert the tweet ine the research collection we want
         MongoManager.insertTweetInCollection(tweet, Constants.Database.COLL_NAME, Constants.Database.DB_NAME, client)
         
-        # Modify the macro data
-        MongoManager.modifyMacroInCollection(tweet, Constants.Database.COLL_NAME, Constants.Database.DB_NAME, client)
+        # Modify the macro data with the response from emotion analysis
+        MongoManager.modifyMacroInCollection(response, Constants.Database.COLL_NAME, Constants.Database.DB_NAME, client)
 
     def on_error(self, status_code, data):
         print(status_code)
