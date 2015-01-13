@@ -23,10 +23,18 @@ def getTextEmotion(tweet):
     for i in words:
         if i in positive_wordsList:
             count = count + 1
-            response[Constants.AbstractConstants.POSITIVE][i] += 1
+            if(i in response[Constants.AbstractConstants.POSITIVE]):
+                actualsize = response[Constants.AbstractConstants.POSITIVE][i]
+                response[Constants.AbstractConstants.POSITIVE][i] = actualsize + 1
+            else:
+                response[Constants.AbstractConstants.POSITIVE][i] = 1
         elif i in negative_wordsList: 
             count = count - 1
-            response[Constants.AbstractConstants.NEGATIVE][i] += 1
+            if(i in response[Constants.AbstractConstants.NEGATIVE]):
+                actualsize = response[Constants.AbstractConstants.NEGATIVE][i]
+                response[Constants.AbstractConstants.NEGATIVE][i] = actualsize + 1
+            else:
+                response[Constants.AbstractConstants.NEGATIVE][i] = 1
     
     # print(count)
     if count > 0:

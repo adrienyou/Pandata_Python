@@ -11,12 +11,17 @@ Research :
 	'size' : 100
 	'negative_dictio' : 
 	{
-		'mot1' : 5
-		'mot2' : 569
+		{
+			'_id' : mot1
+			'count' : 569
+		}
 	}
 	'positive_dictio' : 
 	{
-		'mot3' : 8
+		{
+			'_id' : mot2
+			'count' : 33
+		}
 	}
 	'tweets' : [tweet1, tweet2...]
 }
@@ -50,3 +55,17 @@ Tweet :
 	}
 
 }
+
+
+Expected Test Results : 	
+		Size : 112
+	   	Positive_Emotion : 2
+	   	Negative_Emotion : 10
+	  	Neutral_Emotion : 100
+
+		Abounds: 1
+		Abundance: 1	
+		Zippy : 106
+		Abominably: 1
+		Abnormal: 64
+		Abolish: 12	

@@ -23,8 +23,10 @@ if __name__ == '__main__':
         client.disconnect()
 
     # Create the stream with a filter on the following tracks
-    #streamer = TwitterManager.TweetStreamer(Constants.Connexion.CONSUMER_KEY, Constants.Connexion.CONSUMER_SECRET, Constants.Connexion.ACCESS_TOKEN_KEY, Constants.Connexion.ACCESS_TOKEN_SECRET)
-    #streamer.statuses.filter(track = Constants.Stream.TRACK, language = Constants.Stream.LANG)
+    streamer = TwitterManager.TweetStreamer(Constants.Connexion.CONSUMER_KEY, Constants.Connexion.CONSUMER_SECRET, Constants.Connexion.ACCESS_TOKEN_KEY, Constants.Connexion.ACCESS_TOKEN_SECRET)
+    streamer.statuses.filter(track = Constants.Stream.TRACK, language = Constants.Stream.LANG)
+
+
     
     
 

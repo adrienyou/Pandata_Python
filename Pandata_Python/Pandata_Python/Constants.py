@@ -62,3 +62,14 @@ class TwitterField:
     RETWEET = "retweet_count"
     TEXT = "text"
     USER = "user"
+
+
+class Test:
+    """Contains the Test constants, such as db_name, collection_name"""
+
+    DB_NAME = "tester"
+    COLL_ID = 1
+    COLL_USER_ID = 1
+    COLL_NAME = "tester"
+    DURATION = 10
+    WORDS = ["bla1", "bla2"]
