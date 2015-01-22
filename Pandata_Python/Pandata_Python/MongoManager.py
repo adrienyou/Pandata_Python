@@ -8,12 +8,13 @@ import TextAnalysis
 import sys
 
 # Create the default document structure in which the tweets will be uploaded
-def createDefaultDoc(_id, user_id, name, duration, words):
+def createDefaultDoc(_id, user_id, title, description, duration, words):
     # Create doc
     doc = {}
     doc[Constants.ResearchField._ID] = _id
     doc[Constants.ResearchField.USER_ID] = user_id
-    doc[Constants.ResearchField.NAME] = name
+    doc[Constants.ResearchField.TITLE] = title
+    doc[Constants.ResearchField.DESCRIPTION] = description
     doc[Constants.ResearchField.DURATION] = duration
 
     doc[Constants.ResearchField.POSDICTIO] = []

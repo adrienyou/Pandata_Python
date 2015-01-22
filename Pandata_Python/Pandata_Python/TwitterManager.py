@@ -26,10 +26,10 @@ class TweetStreamer(TwythonStreamer):
         tweet[Constants.ResearchField.EMOTION] = response[Constants.ResearchField.EMOTION]
 
         # Insert the tweet ine the research collection we want
-        MongoManager.insertTweetInCollection(tweet, Constants.Database.COLL_NAME, Constants.Database.DB_NAME, client)
+        MongoManager.insertTweetInCollection(tweet, Constants.Database.COLL_TITLE, Constants.Database.DB_NAME, client)
         
         # Modify the macro data with the response from emotion analysis
-        MongoManager.modifyMacroInCollection(response, Constants.Database.COLL_NAME, Constants.Database.DB_NAME, client)
+        MongoManager.modifyMacroInCollection(response, Constants.Database.COLL_TITLE, Constants.Database.DB_NAME, client)
 
     def on_error(self, status_code, data):
         print(status_code)

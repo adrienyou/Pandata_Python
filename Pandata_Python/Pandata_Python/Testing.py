@@ -195,7 +195,8 @@ def test_E2():
     print("Client disconnect")
 
     print("Ending test...")
-
+    
+# Test the modifyMacroInCollection function ||| Success
 def test_F():
     print("Starting test...")
 
@@ -219,10 +220,10 @@ def test_F():
 
 if __name__ == '__main__':
     #test_A()
-    #test_B()
-    #test_C1()
-    #test_C2()
+    test_B()
+    test_C1()
+    test_C2()
     #test_D()
     #test_E1()
     #test_E2()
-    test_F()
+    #test_F()

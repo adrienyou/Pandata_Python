@@ -1,6 +1,7 @@
 """
 @authors: YOU
 """
+
 class AbstractConstants:
     POSITIVE = "pos"
     NEGATIVE = "neg"
@@ -19,11 +20,11 @@ class Connexion:
 class Database:
     """Contains the Database constants, such as db_name, collection_name"""
 
-    #DB_NAME = "Researches"
-    DB_NAME = "dbtest2"
+    DB_NAME = "mean-dev"
     COLL_ID = 1
-    COLL_USER_ID = 1
-    COLL_NAME = "colltest2"
+    COLL_USER_ID = "54689fc0b456057800046d6f"
+    COLL_TITLE = "My research for Samsung and Apple"
+    COLL_DESC = "This is the description field for a collection (meaning for a specific research, because a collection is a research)"
     DURATION = 3
     WORDS = ["samsung", "apple"]
 
@@ -31,8 +32,9 @@ class ResearchField:
     """Contains the Research constants, such as _id, user_id..."""
 
     _ID = '_id'
-    USER_ID = 'user_id'
-    NAME = 'name'
+    USER_ID = 'user'
+    TITLE = 'title'
+    DESCRIPTION = 'description'
     DURATION = 'duration'
     POSDICTIO = 'positive_dictio'
     NEGDICTIO = 'negative_dictio'
@@ -69,7 +71,7 @@ class Test:
 
     DB_NAME = "tester"
     COLL_ID = 1
-    COLL_USER_ID = 1
+    COLL_USER_ID = "54689fc0b456057800046d6f"
     COLL_NAME = "tester"
     DURATION = 10
     WORDS = ["bla1", "bla2"]

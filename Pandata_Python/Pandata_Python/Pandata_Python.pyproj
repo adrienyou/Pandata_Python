@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d020788f-ff34-453d-887a-467fcf26c598</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Testing.py</StartupFile>
+    <StartupFile>Pandata_Python.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -45,7 +45,7 @@
     <InterpreterReference Include="{9a7a9026-48c1-4688-9d5d-e5699d47d074}\3.4" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CollectionSchema.txt" />
+    <Content Include="SchemasAndData.txt" />
     <Content Include="negative_words" />
     <Content Include="positive_words" />
   </ItemGroup>

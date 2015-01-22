@@ -1,8 +1,9 @@
 Research : 
 {
 	'_id' : id
-	'user_id' : user_id
-	'name' : name
+	'user' : user_id
+	'title' : title
+	'description' : description
 	'duration' : "1/2/3/4 weeks"
 	'words' : ['a', 'b', 'c']
 	'positive_emotion' : 83
@@ -57,7 +58,7 @@ Tweet :
 }
 
 
-Expected Test Results : 	
+Expected Test Results (run all) : 	
 		Size : 112
 	   	Positive_Emotion : 2
 	   	Negative_Emotion : 10
