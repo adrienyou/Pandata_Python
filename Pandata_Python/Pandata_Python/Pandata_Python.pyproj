@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d020788f-ff34-453d-887a-467fcf26c598</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Pandata_Python.py</StartupFile>
+    <StartupFile>Testing.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -48,6 +48,7 @@
     <Content Include="SchemasAndData.txt" />
     <Content Include="negative_words" />
     <Content Include="positive_words" />
+    <Content Include="tester.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

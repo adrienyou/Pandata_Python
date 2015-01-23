@@ -1,15 +1,16 @@
 Research : 
 {
-	'_id' : id
+	'python_id' : id
 	'user' : user_id
 	'title' : title
 	'description' : description
 	'duration' : "1/2/3/4 weeks"
+	'created' : "2015-01-13T12:07:24.852Z"
 	'words' : ['a', 'b', 'c']
+	'size' : 100
 	'positive_emotion' : 83
 	'negative_emotion' : 12
 	'neutral_emotion' : 5
-	'size' : 100
 	'negative_dictio' : 
 	{
 		{

@@ -21,7 +21,8 @@ class Database:
     """Contains the Database constants, such as db_name, collection_name"""
 
     DB_NAME = "mean-dev"
-    COLL_ID = 1
+    COLL_NAME = "samsung_apple_ayou"
+    COLL_PYTHON_ID = 1
     COLL_USER_ID = "54689fc0b456057800046d6f"
     COLL_TITLE = "My research for Samsung and Apple"
     COLL_DESC = "This is the description field for a collection (meaning for a specific research, because a collection is a research)"
@@ -29,13 +30,14 @@ class Database:
     WORDS = ["samsung", "apple"]
 
 class ResearchField:
-    """Contains the Research constants, such as _id, user_id..."""
+    """Contains the Research constants, such as id, user..."""
 
-    _ID = '_id'
-    USER_ID = 'user'
+    PYTHON_ID = 'python_id'
+    USER = 'user'
     TITLE = 'title'
     DESCRIPTION = 'description'
     DURATION = 'duration'
+    CREATED = 'created'
     POSDICTIO = 'positive_dictio'
     NEGDICTIO = 'negative_dictio'
     WORDS = 'words'
@@ -70,8 +72,10 @@ class Test:
     """Contains the Test constants, such as db_name, collection_name"""
 
     DB_NAME = "tester"
+    COLL_NAME = "tester"
     COLL_ID = 1
     COLL_USER_ID = "54689fc0b456057800046d6f"
-    COLL_NAME = "tester"
+    COLL_TITLE = "tester title"
+    COLL_DESC = "tester description"
     DURATION = 10
     WORDS = ["bla1", "bla2"]

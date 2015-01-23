@@ -4,7 +4,7 @@ import MongoManager
 import pymongo
 import Constants
 
-""" Use this command line in shell (not mongo shell) """
+""" Use this command line in shell in mongoDB bin directory (not mongo shell) to export the collection """
 # mongoexport --db tester --collection tester --out F:\Projects\Pandata_Python\Pandata_Python\Pandata_Python\tester.json
 
 # Test the TextAnalysis.getEmotion(tweet) ||| Success
@@ -67,7 +67,7 @@ def test_B():
     client.drop_database(Constants.Test.DB_NAME)
     print("Dropped database: " + Constants.Test.DB_NAME)
 
-    doc = MongoManager.createDefaultDoc(Constants.Test.COLL_ID, Constants.Test.COLL_USER_ID, Constants.Test.COLL_NAME, Constants.Test.DURATION, Constants.Test.WORDS)
+    doc = MongoManager.createDefaultDoc(Constants.Test.COLL_ID, Constants.Test.COLL_USER_ID, Constants.Test.COLL_TITLE, Constants.Test.COLL_DESC, Constants.Test.DURATION, Constants.Test.WORDS)
     print("Created Default Document: " + TwitterManager.to_JSON(doc))
 
     MongoManager.createNewResearchColl(doc, Constants.Test.COLL_NAME, Constants.Test.DB_NAME, client)
@@ -127,10 +127,10 @@ def test_D():
 
     db = client[Constants.Test.DB_NAME]
     collection = db[Constants.Test.COLL_NAME]
-    collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {"size" : 111}})
-    collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {Constants.ResearchField.POSEMO : 1}})
-    collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {Constants.ResearchField.NEGEMO : 10}})
-    collection.update({"_id" : Constants.Database.COLL_ID}, {"$inc": {Constants.ResearchField.NEUEMO : 100}})
+    collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$inc": {Constants.ResearchField.SIZE : 111}})
+    collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$inc": {Constants.ResearchField.POSEMO : 1}})
+    collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$inc": {Constants.ResearchField.NEGEMO : 10}})
+    collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$inc": {Constants.ResearchField.NEUEMO : 100}})
     print("Increment size by 111, positive_emotion by 1, negative_emotion by 10 and neutral_emotion by 100")
 
     client.disconnect()
@@ -151,13 +151,13 @@ def test_E1():
      
     dictPos = dict()
     dictPos["zippy"] = 5
-    collection.update({"_id" : Constants.Database.COLL_ID, Constants.ResearchField.POSDICTIO : {"$elemMatch" : {"_id" : "zippy"}} }, 
+    collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID, Constants.ResearchField.POSDICTIO : {"$elemMatch" : {"_id" : "zippy"}} }, 
                       {"$inc" : {Constants.ResearchField.POSDICTIO + ".$.count":  dictPos["zippy"]}})
     print("Update Positive Dictio")
 
     dictNeg = dict()
     dictNeg["abnormal"] = 7
-    collection.update({"_id" : Constants.Database.COLL_ID, Constants.ResearchField.NEGDICTIO : {"$elemMatch" : {"_id" : "abnormal"}} }, 
+    collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID, Constants.ResearchField.NEGDICTIO : {"$elemMatch" : {"_id" : "abnormal"}} }, 
                       {"$inc" : {Constants.ResearchField.NEGDICTIO + ".$.count":  dictNeg["abnormal"]}})
     print("Update Negative Dictio")
 
@@ -179,7 +179,7 @@ def test_E2():
      
     dictPos = dict()
     dictPos["zippy"] = 100
-    collection.update({"_id" : Constants.Database.COLL_ID, Constants.ResearchField.POSDICTIO : {"$elemMatch" : {"_id" : "zippy"}} }, 
+    collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID, Constants.ResearchField.POSDICTIO : {"$elemMatch" : {"_id" : "zippy"}} }, 
                       {"$inc" : {Constants.ResearchField.POSDICTIO + ".$.count":  dictPos["zippy"]}})
     print("Update Positive Dictio")
 
@@ -187,7 +187,7 @@ def test_E2():
     dictNeg["abnormal"] = 57
     dictNeg["abolish"] = 12
     for i in dictNeg:
-        collection.update({"_id" : Constants.Database.COLL_ID, Constants.ResearchField.NEGDICTIO : {"$elemMatch" : {"_id" : i}} }, 
+        collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID, Constants.ResearchField.NEGDICTIO : {"$elemMatch" : {"_id" : i}} }, 
                           {"$inc" : {Constants.ResearchField.NEGDICTIO + ".$.count":  dictNeg[i]}})
     print("Update Negative Dictio")
 
@@ -223,7 +223,7 @@ if __name__ == '__main__':
     test_B()
     test_C1()
     test_C2()
-    #test_D()
-    #test_E1()
-    #test_E2()
-    #test_F()
+    test_D()
+    test_E1()
+    test_E2()
+    test_F()
