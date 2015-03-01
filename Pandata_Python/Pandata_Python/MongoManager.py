@@ -4,6 +4,7 @@
 
 import pymongo
 import Constants
+import Variables
 import TextAnalysis
 import sys
 
@@ -46,7 +47,7 @@ def createDefaultDoc(python_id, user_id, title, description, duration, words):
 
     return doc
 
-# Create new research
+# Create new research by inserting the structured doc into the collection
 def createNewResearchColl(doc, coll_name, db_name, client):
     db = client[db_name]
     collection = db[coll_name]
@@ -60,7 +61,7 @@ def insertTweetInCollection(tweet, coll_name, db_name, client):
     db = client[db_name]
     collection = db[coll_name]
     try:
-        collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$push": {"tweets" : tweet}})
+        collection.update({Constants.ResearchField.PYTHON_ID : Variables.Database.RESEARCH_PYTHON_ID}, {"$push": {"tweets" : tweet}})
         print('Tweet inserted')
     except:
         print("Unexpected error:", sys.exc_info())
@@ -75,29 +76,29 @@ def modifyMacroInCollection(response, coll_name, db_name, client):
     emotion = response[Constants.ResearchField.EMOTION]
 
     try:
-        # Add one to the size
-        collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$inc": {Constants.ResearchField.SIZE : 1}})
+        # Increase the size
+        collection.update({Constants.ResearchField.PYTHON_ID : Variables.Database.RESEARCH_PYTHON_ID}, {"$inc": {Constants.ResearchField.SIZE : 1}})
 
         if(emotion == Constants.AbstractConstants.POSITIVE):
-            # Positive emotion
-            collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$inc": {Constants.ResearchField.POSEMO : 1}})
+            # Increase the positive emotion counter
+            collection.update({Constants.ResearchField.PYTHON_ID : Variables.Database.RESEARCH_PYTHON_ID}, {"$inc": {Constants.ResearchField.POSEMO : 1}})
         
         elif(emotion == Constants.AbstractConstants.NEGATIVE):
-            # Negative emotion
-            collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$inc": {Constants.ResearchField.NEGEMO : 1}})
+            # Increase the negative emotion counter
+            collection.update({Constants.ResearchField.PYTHON_ID : Variables.Database.RESEARCH_PYTHON_ID}, {"$inc": {Constants.ResearchField.NEGEMO : 1}})
         
         elif(emotion == Constants.AbstractConstants.NEUTRAL):
-            # Neutral emotion
-            collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID}, {"$inc": {Constants.ResearchField.NEUEMO : 1}})
+            # Increase the neutral emotion counter
+            collection.update({Constants.ResearchField.PYTHON_ID : Variables.Database.RESEARCH_PYTHON_ID}, {"$inc": {Constants.ResearchField.NEUEMO : 1}})
 
         # Add words to positive_dictio
         for word in dictPos:
-            collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID, Constants.ResearchField.POSDICTIO : {"$elemMatch" : {"_id" : word}} }, 
+            collection.update({Constants.ResearchField.PYTHON_ID : Variables.Database.RESEARCH_PYTHON_ID, Constants.ResearchField.POSDICTIO : {"$elemMatch" : {"_id" : word}} }, 
                               {"$inc" : {Constants.ResearchField.POSDICTIO + ".$.count":  dictPos[word]}})
 
         # Add words to negative_dictio
         for word in dictNeg:
-            collection.update({Constants.ResearchField.PYTHON_ID : Constants.Database.COLL_PYTHON_ID, Constants.ResearchField.NEGDICTIO : {"$elemMatch" : {"_id" : word}} }, 
+            collection.update({Constants.ResearchField.PYTHON_ID : Variables.Database.RESEARCH_PYTHON_ID, Constants.ResearchField.NEGDICTIO : {"$elemMatch" : {"_id" : word}} }, 
                               {"$inc" : {Constants.ResearchField.NEGDICTIO + ".$.count":  dictNeg[word]}})
 
     except:

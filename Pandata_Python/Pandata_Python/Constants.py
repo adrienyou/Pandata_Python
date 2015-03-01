@@ -6,7 +6,6 @@ class AbstractConstants:
     POSITIVE = "pos"
     NEGATIVE = "neg"
     NEUTRAL = "neu"
-    EXISTING_COLL = True
 
 class Connexion:
     """Contains the connexion constants, such as access_token key/secret and consumer key/secret """
@@ -15,19 +14,6 @@ class Connexion:
     ACCESS_TOKEN_SECRET = "EP0Kyo8beg1hYIcp6UU4KyPvFbxlQjhfVh8vE4qImThr2"
     CONSUMER_KEY = "lVla8b4EftXbhuR3cHCnI3KZv"
     CONSUMER_SECRET = "w5qwgBYkhFa6z8Z146wVrPDLxQ6JJRFBhTzK73CevVhWXVuliU"
-
-
-class Database:
-    """Contains the Database constants, such as db_name, collection_name"""
-
-    DB_NAME = "mean-dev"
-    COLL_NAME = "samsung_apple_ayou"
-    COLL_PYTHON_ID = 1
-    COLL_USER_ID = "54689fc0b456057800046d6f"
-    COLL_TITLE = "My research for Samsung and Apple"
-    COLL_DESC = "This is the description field for a collection (meaning for a specific research, because a collection is a research)"
-    DURATION = 3
-    WORDS = ["samsung", "apple"]
 
 class ResearchField:
     """Contains the Research constants, such as id, user..."""
@@ -73,9 +59,9 @@ class Test:
 
     DB_NAME = "tester"
     COLL_NAME = "tester"
-    COLL_ID = 1
-    COLL_USER_ID = "54689fc0b456057800046d6f"
-    COLL_TITLE = "tester title"
-    COLL_DESC = "tester description"
+    RESEARCH_ID = 1
+    RESEARCH_USER_ID = "54689fc0b456057800046d6f"
+    RESEARCH_TITLE = "tester title"
+    RESEARCH_DESC = "tester description"
     DURATION = 10
     WORDS = ["bla1", "bla2"]
