@@ -12,19 +12,19 @@ Research :
 	'negative_emotion' : 12
 	'neutral_emotion' : 5
 	'negative_dictio' : 
-	{
+	[
 		{
 			'_id' : mot1
 			'count' : 569
 		}
-	}
+	]
 	'positive_dictio' : 
-	{
+	[
 		{
 			'_id' : mot2
 			'count' : 33
 		}
-	}
+	]
 	'tweets' : [tweet1, tweet2...]
 }
 

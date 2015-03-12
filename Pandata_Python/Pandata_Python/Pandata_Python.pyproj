@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d020788f-ff34-453d-887a-467fcf26c598</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Testing.py</StartupFile>
+    <StartupFile>Pandata_Python.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
