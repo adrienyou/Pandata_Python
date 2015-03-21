@@ -36,7 +36,6 @@ class ResearchField:
 
 class Stream:
     """Contains the Stream parameters"""
-    TRACK = 'samsung, apple'
     LANG = 'en, fr'
 
 class TwitterField:

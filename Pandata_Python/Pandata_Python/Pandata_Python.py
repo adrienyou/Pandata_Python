@@ -26,7 +26,7 @@ if __name__ == '__main__':
     # Create the stream with the different Twitter keys/access tokens
     streamer = TwitterManager.TweetStreamer(Constants.Connexion.CONSUMER_KEY, Constants.Connexion.CONSUMER_SECRET, Constants.Connexion.ACCESS_TOKEN_KEY, Constants.Connexion.ACCESS_TOKEN_SECRET)
     # Add a filter to the stream, about the track to keep (words) and the language
-    streamer.statuses.filter(track = Constants.Stream.TRACK, language = Constants.Stream.LANG)
+    streamer.statuses.filter(track = Variables.Database.TRACK, language = Constants.Stream.LANG)
 
 
     

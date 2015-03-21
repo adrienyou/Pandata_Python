@@ -48,6 +48,7 @@
     <InterpreterReference Include="{9a7a9026-48c1-4688-9d5d-e5699d47d074}\3.4" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="README.md" />
     <Content Include="SchemasAndData.txt" />
     <Content Include="negative_words" />
     <Content Include="positive_words" />

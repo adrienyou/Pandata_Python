@@ -12,7 +12,7 @@ class Database:
     COLL_NAME = "researches"
 
     # Change this
-    RESEARCH_PYTHON_ID = 2 # Need to increment it everytime
+    RESEARCH_PYTHON_ID = 2 # Need to increment for every new research.
     # Put to true if the current stream failed and you want to start it again. Else, let it at false.
     EXISTING_RESEARCH = True
     RESEARCH_USER_ID = "54689fc0b456057800046d6f" #{ "$oid" : "54689fc0b456057800046d6f" } 
@@ -20,3 +20,4 @@ class Database:
     RESEARCH_DESC = "This is a research about Barack Obama"
     DURATION = 3
     WORDS = ["obama", "barack", "barackobama"]
+    TRACK = 'obama, barack, barackobama'
